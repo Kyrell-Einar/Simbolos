@@ -1,0 +1,109 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    scroll-behavior: smooth;
+}
+
+/* Container centralizado */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+/* Header fixo */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1f3c6b;
+    color: #fff;
+    padding: 1rem 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+header nav li {
+    margin: 0 1rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #ffdd57;
+}
+
+/* Seções */
+.section {
+    padding: 100px 0 50px; /* top padding para compensar header fixo */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-in-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Títulos das seções */
+.section h2 {
+    text-align: center;
+    color: #1f3c6b;
+    margin-bottom: 1rem;
+}
+
+/* Parágrafos */
+.section p {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    text-align: justify;
+}
+
+/* Footer */
+footer {
+    background-color: #1f3c6b;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 50px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav li {
+        margin: 0.5rem 0;
+    }
+}
