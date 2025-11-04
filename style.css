@@ -213,19 +213,19 @@ footer {
     flex-direction: column;
     position: fixed;
     top: 70px;
-    right: -100%;
+    left: -220px; /* inicial fora da tela, lado esquerdo */
     width: 200px;
-    background: rgba(255, 253, 249, 0.5); /* 50% de opacidade */
+    background: rgba(255, 253, 249, 0.5); /* 50% opacidade */
     height: calc(100vh - 70px);
     gap: 20px;
     padding: 20px;
-    transition: right 0.3s ease;
-    box-shadow: -2px 0 8px var(--sombra);
-    backdrop-filter: blur(5px); /* opcional para efeito mais elegante */
+    transition: left 0.3s ease; /* animar do lado esquerdo */
+    box-shadow: 2px 0 8px var(--sombra);
+    backdrop-filter: blur(5px);
   }
 
   nav ul.show {
-    right: 0;
+    left: 0; /* desliza para dentro da tela */
   }
 
   .nav-toggle {
