@@ -185,3 +185,49 @@ footer {
     font-size: 0.75rem;
   }
 }
+
+/* MENU HAMBURGER MOBILE */
+.nav-toggle {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1100;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--cor-primaria);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 200px;
+    background: var(--cor-header);
+    height: calc(100vh - 70px);
+    gap: 20px;
+    padding: 20px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 8px var(--sombra);
+  }
+
+  nav ul.show {
+    right: 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+}
