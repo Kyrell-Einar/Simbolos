@@ -8,23 +8,125 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>“Símbolos Adinkras: significados e silenciamentos — Tecnologia e resistência cultural afro-brasileira”</h1>
-    <div class="nav-toggle" id="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav>
-      <ul id="nav-menu">
-        <li><a href="index.html">Introdução</a></li>
-        <li><a href="materiais.html">Materiais</a></li>
-        <li><a href="resultados.html">Resultados</a></li>
-        <li><a href="referencias.html">Referências</a></li>
-        <li><a href="sobre.html" class="active">Sobre</a></li>
-      </ul>
-    </nav>
-  </header>
+ <header>
+  <h1>“Símbolos Adinkras: significados e silenciamentos — Tecnologia e resistência cultural afro-brasileira”</h1>
+
+  <!-- Botão retrátil -->
+  <div class="nav-toggle" id="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Navegação -->
+  <nav id="navbar">
+    <ul id="nav-menu">
+      <li><a href="index.html">Introdução</a></li>
+      <li><a href="materiais.html">Materiais</a></li>
+      <li><a href="resultados.html">Resultados</a></li>
+      <li><a href="referencias.html">Referências</a></li>
+      <li><a href="sobre.html" class="active">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+/* ==== HEADER ==== */
+header {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* ==== MENU PRINCIPAL ==== */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ffcc00;
+}
+
+/* ==== BOTÃO RETRÁTIL ==== */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.nav-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ==== MODO MOBILE ==== */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: #333;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
+</style>
+
+<script>
+  // Script do menu retrátil
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("nav-toggle");
+    const menu = document.getElementById("nav-menu");
+
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+      toggle.classList.toggle("active");
+    });
+  });
+</script>
+
 
   <main>
     <section>
