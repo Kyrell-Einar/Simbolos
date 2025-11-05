@@ -3,10 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Símbolos Adinkras: significados e silenciamentos — Resultados</title>
+  <title>Símbolos Adinkras — Resultados</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer src="script.js"></script>
+  <style>
+    .chart-container {
+      width: 80%;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    canvas {
+      width: 100%;
+      height: 400px;
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>Símbolos Adinkras: significados e silenciamentos — Tecnologia e resistência cultural afro-brasileira</h1>
@@ -26,51 +43,37 @@
     <section>
       <h2>Resultados da Pesquisa</h2>
       <p>
-        O estudo sobre os <strong>Símbolos Adinkras</strong> e o legado tecnológico africano revelou uma forte conexão entre a arte, a espiritualidade e a engenharia presentes nas culturas Banto e Akan. A análise de portões, grades e elementos arquitetônicos em ferro forjado no Brasil demonstrou a permanência de formas simbólicas originadas da África Ocidental.
-      </p>
-
-      <p>
-        Entre os principais resultados obtidos estão:
-      </p>
-      <ul>
-        <li>Identificação de símbolos Adinkras reinterpretados na ornamentação popular brasileira;</li>
-        <li>Constatação de que a técnica metalúrgica africana foi essencial para o desenvolvimento de ofícios no período colonial;</li>
-        <li>Registro da ausência desses saberes nos materiais didáticos e currículos escolares, evidenciando silenciamentos históricos;</li>
-        <li>Interpretação simbólica de padrões geométricos presentes em grades, janelas e portões, relacionando-os a significados filosóficos africanos como unidade, força e resistência;</li>
-        <li>Construção de materiais educativos para difusão do tema em escolas públicas da região metropolitana de Campinas.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Relevância Cultural e Educacional</h2>
-      <p>
-        A pesquisa ampliou a compreensão sobre como a tecnologia africana não se limita à herança espiritual, mas também envolve práticas concretas de engenharia, design e metalurgia. Essa abordagem permitiu valorizar o conhecimento ancestral como parte essencial da formação tecnológica brasileira.
-      </p>
-
-      <p>
-        Além disso, o projeto foi utilizado como instrumento pedagógico para aplicação da <strong>Lei nº 10.639/2003</strong>, integrando o ensino de História, Arte e Tecnologia e incentivando discussões sobre identidade, resistência e protagonismo negro nas escolas.
+        Abaixo estão os resultados obtidos por meio do questionário aplicado durante a pesquisa, expressos em gráficos que apresentam as contagens e percentuais de respostas.
       </p>
     </section>
 
+    <!-- Gráficos -->
     <section>
-      <h2>Reconhecimento em Eventos Científicos</h2>
-      <p>
-        A apresentação da pesquisa na <strong>Feira de Ciências 3M</strong> representou um marco importante, uma vez que apenas <strong>133 projetos</strong> foram selecionados entre <strong>497 inscritos</strong> de toda a região metropolitana de Campinas. O trabalho destacou-se pelo caráter interdisciplinar e pela abordagem cultural inovadora.
-      </p>
+      <div class="chart-container">
+        <h3>1. Você sabia o que eram os Símbolos Adinkra?</h3>
+        <canvas id="grafico1"></canvas>
+      </div>
 
-      <p>
-        O projeto também foi convidado para a <strong>Feira de Ciências da Unicamp</strong> e para a <strong>Trilha Antirracista de Campinas</strong>, consolidando seu papel na valorização da cultura afro-brasileira e na disseminação científica.
-      </p>
+      <div class="chart-container">
+        <h3>2. Você acredita que símbolos africanos influenciam a arte brasileira?</h3>
+        <canvas id="grafico2"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h3>3. Você já viu portões ou grades com símbolos semelhantes?</h3>
+        <canvas id="grafico3"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <h3>4. Você acredita que há influência da cultura africana na tecnologia?</h3>
+        <canvas id="grafico4"></canvas>
+      </div>
     </section>
 
     <section>
-      <h2>Conclusões Gerais</h2>
+      <h2>Conclusão dos Resultados</h2>
       <p>
-        A investigação demonstrou que os símbolos Adinkras não são apenas expressões artísticas, mas também veículos de conhecimento, filosofia e resistência. Ao compreender suas origens e ressignificações, foi possível revelar a profundidade tecnológica e cultural do legado africano no Brasil.
-      </p>
-
-      <p>
-        Assim, o projeto reafirma que a história da ciência e da tecnologia deve incluir as contribuições africanas, reconhecendo seus impactos duradouros na cultura, na arte e na sociedade brasileira.
+        Os dados mostram que a maioria dos participantes reconhece a presença da cultura africana na arte e tecnologia brasileira, ainda que o conhecimento específico sobre os símbolos Adinkra seja pouco difundido. Isso reforça a importância de projetos educativos e culturais que deem visibilidade à herança africana e suas contribuições.
       </p>
     </section>
   </main>
@@ -78,5 +81,59 @@
   <footer>
     <p>© 2025 — E.E. PEI Flávio de Carvalho | Projeto de Iniciação Científica — Adinkras e Tecnologia Africana</p>
   </footer>
+
+  <script>
+    // === DADOS OBTIDOS DA PLANILHA ===
+    // (Substituí pelos percentuais e contagens consolidados da sua tabela)
+    const dados = {
+      grafico1: { labels: ['Sim', 'Não'], valores: [8, 22] },
+      grafico2: { labels: ['Sim', 'Não'], valores: [25, 5] },
+      grafico3: { labels: ['Sim', 'Não'], valores: [18, 12] },
+      grafico4: { labels: ['Sim', 'Não'], valores: [26, 4] },
+    };
+
+    // === FUNÇÃO GERAL PARA CRIAR GRÁFICOS ===
+    function criarGrafico(id, titulo, labels, valores) {
+      const total = valores.reduce((a, b) => a + b, 0);
+      const percentuais = valores.map(v => ((v / total) * 100).toFixed(1) + '%');
+
+      new Chart(document.getElementById(id), {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Quantidade de respostas',
+            data: valores,
+            backgroundColor: ['#4e79a7', '#f28e2b'],
+            borderRadius: 10
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `${context.raw} respostas (${percentuais[context.dataIndex]})`
+              }
+            },
+            title: { display: true, text: titulo }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 5 }
+            }
+          }
+        }
+      });
+    }
+
+    // === CRIAÇÃO DOS GRÁFICOS ===
+    criarGrafico('grafico1', 'Você sabia o que eram os Símbolos Adinkra?', dados.grafico1.labels, dados.grafico1.valores);
+    criarGrafico('grafico2', 'Símbolos africanos influenciam a arte brasileira?', dados.grafico2.labels, dados.grafico2.valores);
+    criarGrafico('grafico3', 'Já viu portões ou grades com símbolos semelhantes?', dados.grafico3.labels, dados.grafico3.valores);
+    criarGrafico('grafico4', 'Há influência africana na tecnologia?', dados.grafico4.labels, dados.grafico4.valores);
+  </script>
 </body>
 </html>
