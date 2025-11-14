@@ -173,6 +173,23 @@ nav ul li a.active {
     <p>© 2025 — E.E. PEI Flávio de Carvalho | Projeto de Iniciação Científica — Adinkras e Tecnologia Africana</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+  const toggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+
+    if (navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      setTimeout(() => navMenu.style.display = 'none', 400);
+    } else {
+      navMenu.style.display = 'flex';
+      setTimeout(() => navMenu.classList.add('active'), 10);
+    }
+  });
+</script>
+
+
 </body>
 </html>

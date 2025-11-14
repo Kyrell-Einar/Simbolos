@@ -6,7 +6,7 @@
   <title>Símbolos Adinkras — Resultados</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
+  <script defer src="script.js"></script>
   <style>
     .chart-container {
       width: 80%;
@@ -17,169 +17,178 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       padding: 20px;
     }
+
     canvas {
       width: 100%;
       height: 400px;
+    }
+
+    /* ==== HEADER ==== */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    /* ==== MENU PRINCIPAL ==== */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #ffcc00;
+    }
+
+    /* ==== BOTÃO RETRÁTIL ==== */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      top: 25px;
+      right: 25px;
+    }
+
+    .nav-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ==== MODO MOBILE ==== */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background: #333;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 15px 0;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 
 <body>
- <header>
-  <h1>“Símbolos Adinkras: significados e silenciamentos — Tecnologia e resistência cultural afro-brasileira”</h1>
+  <header>
+    <h1>“Símbolos Adinkras: significados e silenciamentos — Tecnologia e resistência cultural afro-brasileira”</h1>
 
-  <!-- Botão retrátil -->
-  <div class="nav-toggle" id="nav-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+    <!-- Botão retrátil -->
+    <div class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" role="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-  <!-- Navegação -->
-  <nav id="navbar">
-    <ul id="nav-menu">
-      <li><a href="index.html">Introdução</a></li>
-      <li><a href="materiais.html">Materiais</a></li>
-      <li><a href="resultados.html" class="active">Resultados</a></li>
-      <li><a href="referencias.html">Referências</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-    </ul>
-  </nav>
-</header>
+    <!-- Navegação -->
+    <nav id="navbar">
+      <ul id="nav-menu">
+        <li><a href="index.html" class="active">Introdução</a></li>
+        <li><a href="materiais.html">Materiais</a></li>
+        <li><a href="resultados.html">Resultados</a></li>
+        <li><a href="referencias.html">Referências</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+    <!-- Botão retrátil -->
+    <div class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" role="button">
+      <span></span><span></span><span></span>
+    </div>
 
-<style>
-/* ==== HEADER ==== */
-header {
-  background: #222;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-}
-
-header h1 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-}
-
-/* ==== MENU PRINCIPAL ==== */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: #ffcc00;
-}
-
-/* ==== BOTÃO RETRÁTIL ==== */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  position: absolute;
-  top: 25px;
-  right: 25px;
-}
-
-.nav-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #fff;
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* ==== MODO MOBILE ==== */
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background: #333;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 15px 0;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-}
-</style>
-
-<script>
-  // Script do menu retrátil
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("nav-toggle");
-    const menu = document.getElementById("nav-menu");
-
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-      toggle.classList.toggle("active");
-    });
-  });
-</script>
-
+    <!-- Navegação (id's compatíveis com script.js) -->
+    <nav id="navbar">
+      <ul id="nav-menu">
+        <li><a href="index.html">Introdução</a></li>
+        <li><a href="materiais.html">Materiais</a></li>
+        <li><a href="resultados.html" class="active">Resultados</a></li>
+        <li><a href="referencias.html">Referências</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main>
     <section>
       <h2>Resultados da Pesquisa</h2>
       <p>
-        Abaixo estão os resultados obtidos por meio do questionário aplicado durante a pesquisa, expressos em gráficos que apresentam as contagens e percentuais de respostas.
+        Abaixo estão os resultados coletados no questionário aplicado aos 175 alunos. Os gráficos mostram contagens e percentuais — use a visualização para apoiar a apresentação na Unicamp.
       </p>
     </section>
 
-    <!-- Gráficos -->
     <section>
-      <div class="chart-container">
-        <h3>1. Você sabia o que eram os Símbolos Adinkra?</h3>
-        <canvas id="grafico1"></canvas>
-      </div>
+      <h2>Resultados Quantitativos</h2>
 
-      <div class="chart-container">
-        <h3>2. Você acredita que símbolos africanos influenciam a arte brasileira?</h3>
-        <canvas id="grafico2"></canvas>
-      </div>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>1. Você já observou símbolos Adinkras em portões de ferro na sua cidade?</h3>
+          <canvas id="grafico1"></canvas>
+          <div id="meta1" class="chart-meta" aria-live="polite"></div>
+        </div>
 
-      <div class="chart-container">
-        <h3>3. Você já viu portões ou grades com símbolos semelhantes?</h3>
-        <canvas id="grafico3"></canvas>
-      </div>
+        <div class="chart-card">
+          <h3>2. Você conhece a origem (Akan/Bantos) desses símbolos?</h3>
+          <canvas id="grafico2"></canvas>
+          <div id="meta2" class="chart-meta" aria-live="polite"></div>
+        </div>
 
-      <div class="chart-container">
-        <h3>4. Você acredita que há influência da cultura africana na tecnologia?</h3>
-        <canvas id="grafico4"></canvas>
+        <div class="chart-card">
+          <h3>3. Você conhece o significado de algum desses símbolos Adinkra?</h3>
+          <canvas id="grafico3"></canvas>
+          <div id="meta3" class="chart-meta" aria-live="polite"></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>4. Você já ouviu falar sobre a cultura Banto?</h3>
+          <canvas id="grafico4"></canvas>
+          <div id="meta4" class="chart-meta" aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2>Conclusão dos Resultados</h2>
+      <h2>Interpretação resumida</h2>
       <p>
-        Os dados mostram que a maioria dos participantes reconhece a presença da cultura africana na arte e tecnologia brasileira, ainda que o conhecimento específico sobre os símbolos Adinkra seja pouco difundido. Isso reforça a importância de projetos educativos e culturais que deem visibilidade à herança africana e suas contribuições.
+        Os gráficos reforçam o quadro que o relatório destaca: ampla observação visual dos símbolos nos portões (alto índice de "sim"), mas lacunas no conhecimento da origem e dos significados — ponto que justifica intervenções educativas (jogos, banners, oficinas).
       </p>
     </section>
   </main>
@@ -188,58 +197,59 @@ nav ul li a.active {
     <p>© 2025 — E.E. PEI Flávio de Carvalho | Projeto de Iniciação Científica — Adinkras e Tecnologia Africana</p>
   </footer>
 
+  <!-- === Inicialização dos gráficos (depois de script.js carregado) === -->
   <script>
-    // === DADOS OBTIDOS DA PLANILHA ===
-    // (Substituí pelos percentuais e contagens consolidados da sua tabela)
+    // Dados consolidados (usei o mesmo formato que você forneceu).
     const dados = {
-      grafico1: { labels: ['Sim', 'Não'], valores: [8, 22] },
-      grafico2: { labels: ['Sim', 'Não'], valores: [25, 5] },
-      grafico3: { labels: ['Sim', 'Não'], valores: [18, 12] },
-      grafico4: { labels: ['Sim', 'Não'], valores: [26, 4] },
+      grafico1: { labels: ['Sim', 'Não'], valores: [136, 39] }, // Ex.: ajuste se preferir exibir 175 total
+      grafico2: { labels: ['Akan/Bantos', 'Outra/Não sei'], valores: [104, 71] },
+      grafico3: { labels: ['Sim', 'Não'], valores: [56, 119] },
+      grafico4: { labels: ['Sim', 'Não'], valores: [135, 40] },
     };
 
-    // === FUNÇÃO GERAL PARA CRIAR GRÁFICOS ===
-    function criarGrafico(id, titulo, labels, valores) {
-      const total = valores.reduce((a, b) => a + b, 0);
-      const percentuais = valores.map(v => ((v / total) * 100).toFixed(1) + '%');
+    // Função de criação e também de preencher a meta textual
+    function criarGraficoComMeta(canvasId, titulo, labels, valores, metaElId) {
+      const total = valores.reduce((a,b)=>a+b,0);
+      const percentuais = valores.map(v => ((v/total)*100).toFixed(1)+'%');
 
-      new Chart(document.getElementById(id), {
+      const ctx = document.getElementById(canvasId).getContext('2d');
+      new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels,
-          datasets: [{
-            label: 'Quantidade de respostas',
-            data: valores,
-            backgroundColor: ['#4e79a7', '#f28e2b'],
-            borderRadius: 10
-          }]
+          datasets: [{ data: valores, backgroundColor: ['#4e79a7','#f28e2b'], borderRadius:10 }]
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
-            legend: { display: false },
+            legend: { display:false },
+            title: { display: true, text: titulo },
             tooltip: {
               callbacks: {
-                label: (context) => `${context.raw} respostas (${percentuais[context.dataIndex]})`
+                label: ctx => `${ctx.raw} respostas (${percentuais[ctx.dataIndex]})`
               }
-            },
-            title: { display: true, text: titulo }
+            }
           },
           scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { stepSize: 5 }
-            }
+            y: { beginAtZero:true, ticks:{ stepSize: Math.ceil(total/10) } }
           }
         }
       });
+
+      // Meta textual (contagem + percentual) para leitura rápida / acessibilidade
+      if(metaElId){
+        const meta = document.getElementById(metaElId);
+        const parts = labels.map((lab,i)=>`${lab}: ${valores[i]} (${percentuais[i]})`);
+        meta.textContent = parts.join(' — Total: ' + total);
+      }
     }
 
-    // === CRIAÇÃO DOS GRÁFICOS ===
-    criarGrafico('grafico1', 'Você sabia o que eram os Símbolos Adinkra?', dados.grafico1.labels, dados.grafico1.valores);
-    criarGrafico('grafico2', 'Símbolos africanos influenciam a arte brasileira?', dados.grafico2.labels, dados.grafico2.valores);
-    criarGrafico('grafico3', 'Já viu portões ou grades com símbolos semelhantes?', dados.grafico3.labels, dados.grafico3.valores);
-    criarGrafico('grafico4', 'Há influência africana na tecnologia?', dados.grafico4.labels, dados.grafico4.valores);
+    // Cria os 4 gráficos (ajuste dados se quiser mostrar exatamente 175)
+    criarGraficoComMeta('grafico1','Você já observou símbolos Adinkras em portões de ferro na sua cidade?', dados.grafico1.labels, dados.grafico1.valores, 'meta1');
+    criarGraficoComMeta('grafico2','Você conhece a origem de algum desses símbolos Adinkras?', dados.grafico2.labels, dados.grafico2.valores, 'meta2');
+    criarGraficoComMeta('grafico3','Você conhece o significado de algum desses símbolos Adinkras?', dados.grafico3.labels, dados.grafico3.valores, 'meta3');
+    criarGraficoComMeta('grafico4','Você já ouviu falar sobre a cultura Banto?', dados.grafico4.labels, dados.grafico4.valores, 'meta4');
   </script>
 </body>
 </html>

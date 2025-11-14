@@ -68,3 +68,26 @@ if (title) {
 }
 
 
+// Toggle Menu
+const toggle = document.getElementById("nav-toggle");
+const menu = document.getElementById("nav-menu");
+
+if (toggle && menu) {
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    menu.classList.toggle("active");
+  });
+}
+
+// Transição entre páginas
+const links = document.querySelectorAll("nav a");
+
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 300);
+  });
+});

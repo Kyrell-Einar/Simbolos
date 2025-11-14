@@ -216,47 +216,53 @@ nav ul li a.active {
 
 <section>
   <h2>Fluxograma do Desenvolvimento</h2>
-  <p> O fluxograma abaixo apresenta todas as etapas do desenvolvimento da pesquisa, desde a formulação da hipótese até a apresentação final. 
-    Ele demonstra o caminho percorrido pelos alunos e a organização científica do projeto.
+  <p>
+    O fluxograma abaixo apresenta todas as etapas do desenvolvimento da pesquisa, desde a formulação da hipótese até a apresentação final.
   </p>
 
-  <div class="mermaid fluxograma-grande">
-    graph TD
-      A([🧠 Formação da hipótese]):::etapa --> 
-      B([📚 Revisão bibliográfica]):::etapa -->
-      C([📝 Fichamentos no diário de bordo]):::etapa -->
-      D([👥 Entrevista com 175 alunos]):::etapa -->
-      E([📊 Análise de dados]):::etapa -->
-      F([🧾 Elaboração do relatório]):::etapa -->
-      G([🎨 Produção do banner]):::etapa -->
-      H([🏛️ Apresentação em eventos]):::etapa
-
-      classDef etapa fill:#fdf2e9,stroke:#d35400,stroke-width:3px,color:#2c3e50,font-weight:bold,font-size:18px,rx:12px,ry:12px;
+  <div class="mermaid-container">
+    <div class="mermaid" id="fluxograma">
+graph TD
+  A[Formação da hipótese] --> B[Revisão bibliográfica]
+  B --> C[Fichamentos no diário de bordo]
+  C --> D[Entrevista com 175 alunos]
+  D --> E[Análise de dados]
+  E --> F[Elaboração do relatório]
+  F --> G[Produção do banner]
+  G --> H[Apresentação em eventos]
+    </div>
   </div>
+
+  <style>
+    .mermaid-container {
+      max-width: 1000px;
+      margin: 24px auto;
+      padding: 18px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    /* Ajustes visuais do svg gerado pelo mermaid */
+    .mermaid svg {
+      width: 100% !important;
+      height: auto !important;
+    }
+  </style>
 </section>
 
-<!-- Script do Mermaid -->
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: "base",
-    themeVariables: {
-      primaryColor: "#fdf2e9",
-      edgeLabelBackground: "#f8c471",
-      fontFamily: "Poppins, sans-serif",
-      fontSize: "18px",
-      lineColor: "#d35400",
-      primaryTextColor: "#2c3e50",
-      tertiaryColor: "#f6ddcc"
-    },
-    flowchart: {
-      curve: "basis",
-      nodeSpacing: 100,
-      rankSpacing: 80
-    }
+<!-- Mermaid (renderiza o fluxograma) -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  // Inicializa Mermaid apenas depois do carregamento da página
+  document.addEventListener('DOMContentLoaded', () => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'forest',              // tema mais agradável (pode trocar)
+      flowchart: { curve: 'monotoneX' } // linhas mais suaves
+    });
   });
 </script>
+
 
 
 

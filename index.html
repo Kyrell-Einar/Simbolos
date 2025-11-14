@@ -6,13 +6,15 @@
   <title>Símbolos Adinkras — Pesquisa Científica</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 <header>
   <h1>“Símbolos Adinkras: significados e silenciamentos — Tecnologia e resistência cultural afro-brasileira”</h1>
 
   <!-- Botão retrátil -->
-  <div class="nav-toggle" id="nav-toggle">
+  <div class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" role="button">
     <span></span>
     <span></span>
     <span></span>
@@ -29,6 +31,7 @@
     </ul>
   </nav>
 </header>
+
 
 <style>
 /* ==== HEADER ==== */
@@ -115,17 +118,23 @@ nav ul li a.active {
 </style>
 
 <script>
-  // Script do menu retrátil
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("nav-toggle");
-    const menu = document.getElementById("nav-menu");
+  const toggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-      toggle.classList.toggle("active");
-    });
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+
+    if (navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      setTimeout(() => navMenu.style.display = 'none', 400);
+    } else {
+      navMenu.style.display = 'flex';
+      setTimeout(() => navMenu.classList.add('active'), 10);
+    }
   });
 </script>
+
+
 
 
 <main>
@@ -141,7 +150,7 @@ nav ul li a.active {
     </p>
 
     <p>
-      O estudo parte da hipótese de que a tecnologia africana — especialmente as práticas de metalurgia —
+      O estudo partiu da hipótese de que a tecnologia africana — especialmente as práticas de metalurgia —
       foi sistematicamente silenciada ao longo da história, embora continue presente em portões e ornamentos
       de ferro em todo o Brasil, carregando significados filosóficos e culturais profundos.
     </p>
@@ -199,7 +208,7 @@ nav ul li a.active {
     </p>
 
     <figure>
-      <img src="imagens/metalurgia-africana.jpg" alt="Metalurgia tradicional africana">
+      <img src="imagens/cabecas-bronze.jpg" alt="Metalurgia tradicional africana">
       <figcaption>Metalurgia africana — uma das bases da tecnologia ancestral.</figcaption>
     </figure>
   </section>
@@ -227,11 +236,30 @@ nav ul li a.active {
       <figcaption>Apresentação do projeto na Feira de Ciências 3M — Sumaré/SP.</figcaption>
     </figure>
 
-    <div class="grafico-placeholder">
-      <h3>Participação de Escolas na Feira 3M</h3>
-      <p><em>(Espaço reservado para gráfico mostrando proporção de projetos aceitos entre os inscritos — 133 de 497)</em></p>
-      <img src="imagens/grafico-3m-placeholder.png" alt="Gráfico ilustrativo sobre a seleção de projetos">
-    </div>
+    <div class="grafico-container">
+  <h3>Participação de Escolas na Feira 3M</h3>
+  <canvas id="graficoFeira"></canvas>
+</div>
+
+<style>
+.grafico-container {
+  max-width: 550px;
+  margin: 35px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
   </section>
 
 </main>
@@ -239,5 +267,60 @@ nav ul li a.active {
 <footer>
   <p>© 2025 — E.E. PEI Flávio de Carvalho | Projeto de Iniciação Científica — Adinkras e Tecnologia Africana</p>
 </footer>
+<script>
+const ctx = document.getElementById('graficoFeira');
+
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Aceitos (133)', 'Não aceitos (364)'],
+    datasets: [{
+      data: [133, 364],
+
+      // CORES BONITAS
+      backgroundColor: [
+        'rgba(78, 121, 167, 0.85)',   // azul elegante
+        'rgba(242, 142, 43, 0.85)'    // laranja quente
+      ],
+
+      // DESTAQUE
+      borderColor: '#fff',
+      borderWidth: 3,
+      hoverOffset: 25,
+      spacing: 4
+    }]
+  },
+
+  options: {
+    responsive: true,
+    cutout: '65%',  
+    animation: {
+      animateRotate: true,
+      animateScale: true,
+      duration: 900
+    },
+
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          padding: 15,
+          usePointStyle: true,
+          pointStyle: 'circle',
+          font: {
+            size: 14
+          }
+        }
+      },
+
+      title: {
+        display: false
+      }
+    }
+  }
+});
+</script>
+
+
 </body>
 </html>
